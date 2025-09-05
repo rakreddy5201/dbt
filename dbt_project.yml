@@ -40,3 +40,10 @@ models:
     # Applies to all files under models/example/
     example:
       +materialized: table
+
+seeds:
+  my_new_project:
+    country_codes:
+      +column_types:
+        country_code: varchar(2)
+        country_name: varchar(32)
