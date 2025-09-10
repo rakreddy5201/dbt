@@ -14,4 +14,7 @@ packages:
   - name: dbt_date
     package: godatadriven/dbt_date
     version: 0.16.1
-sha1_hash: 2731d18c45e877958bb8f0373e4394b9c78d8fed
+  - name: dbt_snowflake_query_tags
+    package: get-select/dbt_snowflake_query_tags
+    version: 2.5.3
+sha1_hash: 8888627547ce57145d2446c153c7d7b82488f3a9
