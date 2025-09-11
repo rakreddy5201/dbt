@@ -38,10 +38,19 @@ vars:
 # using the `{{ config(...) }}` macro.
 
 models:
-  dbt:
+  my_new_project:
     +query_tag: { 'PROJECT_NAME': dbt, 'BU': TST }
+    materialized: view
     # Applies to all files under models/example/
-    example:
+    2.Stage:
+      +schema: STAGE
+      +materialized: table
+    3.Inter:
+      +schema: INTER
+      +materialized: table
+    4.Mart:
+      +transient: false
+      +schema: MART
       +materialized: table
 
 seeds:
@@ -51,3 +60,15 @@ seeds:
 
         country_code: varchar(2)
         country_name: varchar(32)
+
+
+dispatch:
+  - macro_namespace: dbt
+    search_order:
+      - dbt_ani
+      - dbt_snowflake_query_tags
+      - dbt
+
+query-comment:
+  comment: '{{ dbt_snowflake_query_tags.get_query_comment(node) }}'
+  append: true
