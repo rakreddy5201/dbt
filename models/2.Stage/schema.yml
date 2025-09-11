@@ -4,11 +4,13 @@ models:
     - name: regions
       tests:
         - dbt_expectations.expect_table_row_count_to_equal_other_table:
-            compare_model: ref("country_codes")
+            arguments:
+              compare_model: ref("country_codes")
         - dbt_expectations.expect_row_values_to_have_recent_data:
-            datepart: day
-            interval: 1
-            column_name: created_at
+            arguments:
+              datepart: day
+              interval: 1
+              column_name: created_at
       columns:
         - name: country_name
           tests:
